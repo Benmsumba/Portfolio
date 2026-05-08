@@ -143,3 +143,42 @@ const setBgBrightness = () => {
 };
 window.addEventListener('scroll', setBgBrightness, { passive: true });
 setBgBrightness();
+
+/* ──────────────────────────────────────────────────────────
+   MAGNETIC CTA BUTTON
+   - Drifts subtly toward mouse pointer when within 100px
+   - Smooth easing for refined motion
+   ────────────────────────────────────────────────────────── */
+const ctaBtnEl = document.getElementById('contact-cta-btn');
+if (ctaBtnEl) {
+  let ctaBtnX = 0, ctaBtnY = 0;
+  let ctaBtnTX = 0, ctaBtnTY = 0;
+  
+  document.addEventListener('mousemove', e => {
+    const rect = ctaBtnEl.getBoundingClientRect();
+    const btnCX = rect.left + rect.width / 2;
+    const btnCY = rect.top + rect.height / 2;
+    const dx = e.clientX - btnCX;
+    const dy = e.clientY - btnCY;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    const maxDist = 100;
+    
+    if (dist < maxDist) {
+      const force = 1 - (dist / maxDist);
+      ctaBtnTX = (dx * 0.28) * force;
+      ctaBtnTY = (dy * 0.28) * force;
+    } else {
+      ctaBtnTX = 0;
+      ctaBtnTY = 0;
+    }
+  }, { passive: true });
+
+  /* Animation loop for magnetic effect */
+  const magneticLoop = () => {
+    ctaBtnX += (ctaBtnTX - ctaBtnX) * 0.18;
+    ctaBtnY += (ctaBtnTY - ctaBtnY) * 0.18;
+    ctaBtnEl.style.transform = `translate(${ctaBtnX}px, ${ctaBtnY}px)`;
+    requestAnimationFrame(magneticLoop);
+  };
+  magneticLoop();
+}

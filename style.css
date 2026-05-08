@@ -280,17 +280,276 @@ nav{
   isolation: isolate;
 }
 
-/* CONTACT */
-.contact-section{background:var(--mint);padding:8rem 3rem}
-.contact-inner{max-width:1100px;margin:0 auto}
-.contact-label{font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(0,0,0,.3);margin-bottom:2rem}
-.contact-h{font-family:var(--fd);font-size:clamp(2.8rem,7vw,6.5rem);font-weight:800;color:#0e0e10;line-height:1.1;letter-spacing:-0.05em;text-transform:uppercase;margin-bottom:4rem}
-.contact-row{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:2rem}
-.contact-info{font-size:.83rem;color:rgba(0,0,0,.4);font-weight:300;line-height:2.4}
-.contact-info a{color:#0e0e10;text-decoration:none;font-weight:500;border-bottom:1px solid rgba(0,0,0,.18)}
-.contact-info a:hover{border-color:#0e0e10}
-.contact-cta{display:inline-block;background:#0e0e10;color:var(--mint);font-family:var(--fd);font-weight:700;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;padding:1.2rem 2.8rem;border-radius:2px;text-decoration:none;transition:background .22s ease,transform .22s ease}
-.contact-cta:hover{background:#1c1c1e;transform:translateY(-2px)}
+/* ============================================================
+   CONTACT · FULL-WIDTH EDITORIAL SECTION
+   ============================================================ */
+.contact-section {
+  background: linear-gradient(135deg, #b8f0d8 0%, #a8e6cc 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 3rem;
+}
+
+/* Soft white radial highlight in top-right */
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(255,255,255,.18) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.contact-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  color: #0a0a0c;
+}
+
+/* Top label with fade divider */
+.contact-top {
+  margin-bottom: 2.4rem;
+}
+
+.contact-label {
+  font-family: var(--fm);
+  font-size: .68rem;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 12, .48);
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+}
+
+.contact-divider-fade {
+  height: 1px;
+  background: linear-gradient(to right, rgba(10,10,12,.3), rgba(10,10,12,0));
+  margin-bottom: 2rem;
+}
+
+/* Headline with serif accent */
+.contact-headline {
+  font-family: var(--fb);
+  font-size: clamp(3rem, 8vw, 9rem);
+  font-weight: 800;
+  line-height: .92;
+  letter-spacing: -.05em;
+  text-transform: uppercase;
+  margin-bottom: 3.2rem;
+  color: #0a0a0c;
+}
+
+.contact-headline-accent {
+  display: inline;
+}
+
+.contact-accent-serif {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Directory section */
+.contact-directory {
+  margin: 3.2rem 0;
+}
+
+.contact-directory-divider {
+  height: 1px;
+  background: rgba(10, 10, 12, .12);
+  margin: 2.4rem 0;
+}
+
+.contact-dir-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  padding: 2.4rem 0;
+}
+
+.contact-dir-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-dir-header {
+  font-family: var(--fm);
+  font-size: .62rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 12, .45);
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+}
+
+.contact-dir-link {
+  font-size: .95rem;
+  color: #0a0a0c;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(10, 10, 12, .18);
+  display: inline-block;
+  transition: border-color .24s ease;
+  margin-bottom: .6rem;
+  line-height: 1.4;
+}
+
+.contact-dir-link:hover {
+  border-color: rgba(10, 10, 12, .4);
+}
+
+.contact-arrow {
+  display: inline;
+  margin-left: .2em;
+  font-size: .88em;
+}
+
+.contact-elsewhere {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+
+.contact-location {
+  font-size: .95rem;
+  color: #0a0a0c;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+.contact-location img {
+  display: inline-block;
+  width: 1.05em;
+  height: .72em;
+  object-fit: cover;
+  vertical-align: -.08em;
+  margin-left: .3em;
+}
+
+.contact-dir-note {
+  font-size: .78rem;
+  color: rgba(10, 10, 12, .55);
+  line-height: 1.5;
+  margin-top: .8rem;
+}
+
+/* CTA + Status row */
+.contact-cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  padding: 2.4rem 0;
+  border-top: 1px solid rgba(10, 10, 12, .12);
+  flex-wrap: wrap;
+}
+
+/* Pill-shaped CTA button with magnetic effect */
+.contact-cta-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .4em;
+  background: #0a0a0c;
+  color: #b8f0d8;
+  padding: .88rem 2.2rem;
+  border-radius: 3rem;
+  text-decoration: none;
+  font-family: var(--fb);
+  font-size: .95rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  transition: all .28s cubic-bezier(0.23, 1, 0.320, 1);
+  will-change: transform;
+  z-index: 10;
+}
+
+.contact-cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(10, 10, 12, .18);
+}
+
+.contact-cta-text {
+  display: inline;
+}
+
+.contact-cta-arrow {
+  display: inline;
+  transition: transform .28s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.contact-cta-button:hover .contact-cta-arrow {
+  transform: translateX(2px);
+}
+
+/* Status block — monospace, right-aligned */
+.contact-status {
+  font-family: var(--fm);
+  font-size: .88rem;
+  text-align: right;
+  color: #0a0a0c;
+}
+
+.contact-status-line {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  line-height: 1.6;
+}
+
+.contact-status-label {
+  color: rgba(10, 10, 12, .45);
+  font-weight: 400;
+}
+
+.contact-status-value {
+  color: #0a0a0c;
+  font-weight: 700;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 800px) {
+  .contact-section {
+    padding: 4rem 1.2rem;
+  }
+
+  .contact-headline {
+    font-size: clamp(2rem, 6vw, 5rem);
+    margin-bottom: 2rem;
+  }
+
+  .contact-dir-cols {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-dir-header {
+    margin-bottom: .8rem;
+  }
+
+  .contact-cta-row {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.6rem 0;
+  }
+
+  .contact-status {
+    text-align: left;
+  }
+
+  .contact-status-line {
+    justify-content: flex-start;
+  }
+}
 
 /* FOOTER */
 footer{
