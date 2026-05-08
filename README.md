@@ -46,7 +46,7 @@ The DICTON brand encapsulates the philosophy of a "Technical Artisan" — someon
 - **Lazy Loading** — Images load on demand for faster initial page load
 - **Modular Architecture** — Separated CSS and JavaScript for maintainability
 - **Smooth Scrolling** — Custom scroll behavior with easing functions
-- **Optimized Typography** — Professional font pairing (Syne, Inter, JetBrains Mono)
+- **Optimized Typography** — Editorial serif headings with a clean system UI body stack
 
 ### Deployment
 - **Vercel** — Serverless deployment platform for fast, reliable hosting
@@ -112,9 +112,9 @@ portfolio/
 - **Muted**: `rgba(228,228,228,.36)` (Subtle Text)
 
 ### Typography
-- **Display Font**: Syne (700, 800 weight) — Bold, modern, geometric
-- **Body Font**: Inter (300, 400, 500 weight) — Highly legible, professional
-- **Monospace**: JetBrains Mono (300 weight) — Technical details, code
+- **Display Font**: Georgia / Times New Roman — classic, premium, editorial
+- **Body Font**: System UI stack — clean, readable, and native-feeling
+- **Monospace**: UI monospace stack — practical and restrained
 
 ### Spacing & Layout
 - Generous padding and margins for premium feel

@@ -10,7 +10,9 @@ html{scroll-behavior:auto}
   --muted: #8c9aa5; /* Slate Gray */
   --line: rgba(184,240,216,.06);
   --mint: var(--accent);
-  --fd:'Syne',sans-serif; --fb:'Inter',sans-serif; --fm:'JetBrains Mono',monospace;
+  --fd: Georgia, 'Times New Roman', serif;
+  --fb: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --fm: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
   --imgf:grayscale(100%) contrast(1.1) brightness(0.8);
   --sb:0px;
   --bg-x:50%;

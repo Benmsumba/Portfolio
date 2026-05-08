@@ -16,11 +16,13 @@ document.querySelectorAll('a,button,.cap-item,.project-item').forEach(el => {
    ────────────────────────────────────────────────────────── */
 const glow = document.getElementById('glow');
 let gX = innerWidth * .5, gY = innerHeight * .5, gTX = gX, gTY = gY;
-const updateBgLighting = (x, y) => {
-  document.documentElement.style.setProperty('--bg-x', `${x}%`);
-  document.documentElement.style.setProperty('--bg-y', `${y}%`);
+let bgX = 50;
+let bgY = 0;
+const updateBgLighting = () => {
+  document.documentElement.style.setProperty('--bg-x', `${bgX}%`);
+  document.documentElement.style.setProperty('--bg-y', `${bgY}%`);
 };
-updateBgLighting(50, 0);
+updateBgLighting();
 
 /* ──────────────────────────────────────────────────────────
    PROJECT IMAGE REVEAL · cursor-following thumbnail
@@ -51,9 +53,9 @@ document.querySelectorAll('.project-item').forEach(item => {
    ────────────────────────────────────────────────────────── */
 document.addEventListener('mousemove', e => {
   gTX = e.clientX; gTY = e.clientY;
-  const x = Math.max(20, Math.min(80, (e.clientX / window.innerWidth) * 100));
-  const y = Math.max(0, Math.min(30, (e.clientY / window.innerHeight) * 18));
-  updateBgLighting(x, y);
+  bgX = Math.max(20, Math.min(80, (e.clientX / window.innerWidth) * 100));
+  bgY = Math.max(0, Math.min(20, (e.clientY / window.innerHeight) * 16));
+  updateBgLighting();
   if (activeImg) { rvTX = e.clientX; rvTY = e.clientY; }
 });
 
@@ -125,9 +127,8 @@ if (lab && footerEl && 'IntersectionObserver' in window) {
 const setBgBrightness = () => {
   const max = document.documentElement.scrollHeight - window.innerHeight;
   const p = max > 0 ? (window.scrollY / max) : 0;
-  const capped = Math.min(0.12, p * 0.12);
-  const y = Math.max(0, Math.min(20, p * 16));
-  updateBgLighting(50, y);
+  bgY = Math.max(0, Math.min(20, p * 16));
+  updateBgLighting();
 };
 window.addEventListener('scroll', setBgBrightness, { passive: true });
 setBgBrightness();
