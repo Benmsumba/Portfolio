@@ -18,6 +18,7 @@ const glow = document.getElementById('glow');
 let gX = innerWidth * .5, gY = innerHeight * .5, gTX = gX, gTY = gY;
 let bgX = 50;
 let bgY = 0;
+const smoothScrollEnabled = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 const updateBgLighting = () => {
   document.documentElement.style.setProperty('--bg-x', `${bgX}%`);
   document.documentElement.style.setProperty('--bg-y', `${bgY}%`);
@@ -65,16 +66,21 @@ document.addEventListener('mousemove', e => {
 let sC = 0, sT = 0;
 const ease = 0.08;
 const maxS = () => document.documentElement.scrollHeight - innerHeight;
-window.addEventListener('wheel', e => {
-  e.preventDefault();
-  sT = Math.max(0, Math.min(sT + e.deltaY, maxS()));
-}, { passive: false });
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const el = document.querySelector(a.getAttribute('href'));
-    if (el) { e.preventDefault(); sT = Math.max(0, Math.min(el.offsetTop - 80, maxS())); }
+if (smoothScrollEnabled) {
+  window.addEventListener('wheel', e => {
+    e.preventDefault();
+    sT = Math.max(0, Math.min(sT + e.deltaY, maxS()));
+  }, { passive: false });
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const el = document.querySelector(a.getAttribute('href'));
+      if (el) { e.preventDefault(); sT = Math.max(0, Math.min(el.offsetTop - 80, maxS())); }
+    });
   });
-});
+} else {
+  sC = window.scrollY;
+  sT = window.scrollY;
+}
 
 /* ──────────────────────────────────────────────────────────
    CAT CLOCK · UTC+2
@@ -105,8 +111,13 @@ if (lab && footerEl && 'IntersectionObserver' in window) {
    RAF LOOP · scroll · glow · reveal · one unified pass
    ────────────────────────────────────────────────────────── */
 (function loop() {
-  const d = sT - sC;
-  if (Math.abs(d) > 0.08) { sC += d * ease; window.scrollTo(0, sC); }
+  if (smoothScrollEnabled) {
+    const d = sT - sC;
+    if (Math.abs(d) > 0.08) { sC += d * ease; window.scrollTo(0, sC); }
+  } else {
+    sC = window.scrollY;
+    sT = window.scrollY;
+  }
 
   gX += (gTX - gX) * 0.04;
   gY += (gTY - gY) * 0.04;
