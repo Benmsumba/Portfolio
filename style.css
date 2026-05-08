@@ -630,26 +630,35 @@ nav{
 /* Status block — monospace, right-aligned */
 .contact-status {
   font-family: var(--fm);
-  font-size: .88rem;
+  font-size: .82rem;
   text-align: right;
   color: #0a0a0c;
+  display: grid;
+  gap: .45rem;
 }
 
 .contact-status-line {
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-  line-height: 1.6;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .9rem;
+  align-items: baseline;
+  line-height: 1.45;
 }
 
 .contact-status-label {
   color: rgba(10, 10, 12, .45);
-  font-weight: 400;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .contact-status-value {
   color: #0a0a0c;
   font-weight: 700;
+  font-family: var(--fb);
+  font-size: .9rem;
+  line-height: 1.35;
 }
 
 /* Mobile responsiveness */
@@ -683,7 +692,8 @@ nav{
   }
 
   .contact-status-line {
-    justify-content: flex-start;
+    grid-template-columns: 1fr;
+    gap: .15rem;
   }
 }
 
