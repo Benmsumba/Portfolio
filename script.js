@@ -112,3 +112,13 @@ if (lab && footerEl && 'IntersectionObserver' in window) {
 
   requestAnimationFrame(loop);
 })();
+
+/* Background brightness parallax (scroll-triggered) */
+const setBgBrightness = () => {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  const p = max > 0 ? (window.scrollY / max) : 0;
+  const capped = Math.min(0.12, p * 0.12);
+  document.documentElement.style.setProperty('--bg-brightness', String(1 + capped));
+};
+window.addEventListener('scroll', setBgBrightness, { passive: true });
+setBgBrightness();

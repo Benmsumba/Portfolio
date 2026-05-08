@@ -13,9 +13,10 @@ html{scroll-behavior:auto}
   --fd:'Syne',sans-serif; --fb:'Inter',sans-serif; --fm:'JetBrains Mono',monospace;
   --imgf:grayscale(100%) contrast(1.1) brightness(0.8);
   --sb:0px;
+  --bg-brightness: 1;
 }
 
-body{background:radial-gradient(circle at 50% 0%, var(--bg-alt) 0%, var(--bg) 100%);color:var(--text);font-family:var(--fb);overflow-x:hidden;cursor:none;overscroll-behavior:none}
+body{background:radial-gradient(circle at 50% 0%, var(--bg-alt) 0%, var(--bg) 100%);color:var(--text);font-family:var(--fb);overflow-x:hidden;cursor:none;overscroll-behavior:none;filter:brightness(var(--bg-brightness));}
 
 /* Pro typography — kerning + ligatures on every header */
 h1,h2,h3,.logo,.proj-title,.contact-h,.about-h,.hero-name,.stat-num,.cap-col-title{
@@ -30,8 +31,34 @@ a{transition:color .22s ease,border-color .22s ease,opacity .22s ease}
 /* NOISE */
 body::before{
   content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.03;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:220px 220px;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:240px 240px; will-change:transform,opacity; animation:grainAnim 6s linear infinite;
+}
+
+@keyframes grainAnim{
+  0%{ transform: translate(0,0); opacity: .02 }
+  50%{ transform: translate(28px,18px); opacity: .035 }
+  100%{ transform: translate(0,0); opacity: .02 }
+}
+
+/* Aura orbs (floating blurred color orbs) */
+#aura1, #aura2{
+  position:fixed;pointer-events:none;z-index:0;filter:blur(64px);mix-blend-mode:screen;opacity:1;
+  background: radial-gradient(circle, rgba(184,240,216,0.035) 0%, rgba(184,240,216,0.01) 60%, transparent 100%);
+  border-radius:50%;
+}
+#aura1{ width:50vw; height:50vw; left:8%; top:6%; animation: auraDrift1 28s linear infinite; }
+#aura2{ width:40vw; height:40vw; right:6%; top:52%; animation: auraDrift2 36s linear infinite; }
+
+@keyframes auraDrift1{
+  0%{ transform: translate3d(0,0,0) scale(1); }
+  50%{ transform: translate3d(6vw, -3vw, 0) scale(1.04); }
+  100%{ transform: translate3d(0,0,0) scale(1); }
+}
+@keyframes auraDrift2{
+  0%{ transform: translate3d(0,0,0) scale(1); }
+  50%{ transform: translate3d(-5vw, 4vw, 0) scale(1.05); }
+  100%{ transform: translate3d(0,0,0) scale(1); }
 }
 
 /* CURSOR */
@@ -94,8 +121,16 @@ nav{
 .hero-wm{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   font-family:var(--fd);font-size:clamp(9rem,20vw,22rem);font-weight:800;
-  color:transparent;-webkit-text-stroke:1px rgba(228,228,228,.028);
+  color:transparent;-webkit-text-stroke:1px rgba(230,237,234,.028);
   white-space:nowrap;pointer-events:none;user-select:none;letter-spacing:-.03em;
+}
+
+/* Subtle shimmer / pulse for hero watermark */
+.hero-wm{ animation: heroPulse 6s ease-in-out infinite; }
+@keyframes heroPulse{
+  0%{ opacity: .06; text-shadow: 0 0 0 rgba(184,240,216,0); }
+  50%{ opacity: .10; text-shadow: 0 10px 50px rgba(184,240,216,0.06); }
+  100%{ opacity: .06; text-shadow: 0 0 0 rgba(184,240,216,0); }
 }
 .hero-meta{
   display:flex;justify-content:space-between;align-items:flex-start;
@@ -192,6 +227,16 @@ nav{
 }
 .proj-tag{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(228,228,228,.08);padding:.18rem .58rem;border-radius:2px;color:rgba(228,228,228,.26)}
 .proj-arrow{color:var(--mint);font-size:.9rem;opacity:0;transform:translateX(-10px) translateY(2px);transition:all .28s ease;padding-top:.25rem;justify-self:end}
+
+/* Glassmorphism for about & capabilities cards */
+.about-grid > div, .cap-cols > div{
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius:8px;
+  padding:1.2rem;
+}
 
 /* CONTACT */
 .contact-section{background:var(--mint);padding:8rem 3rem}
