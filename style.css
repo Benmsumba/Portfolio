@@ -2,15 +2,20 @@
 html{scroll-behavior:auto}
 
 :root{
-  --bg:#0e0e10; --bg2:#161618;
-  --text:#e4e4e4; --muted:rgba(228,228,228,.36);
-  --line:rgba(228,228,228,.065); --mint:#b8f0d8;
+  --bg: #1a2421; /* Deep Forest Ink */
+  --bg-alt: #1f2f2b; /* Slightly lighter Sage/Charcoal */
+  --bg2: var(--bg-alt);
+  --accent: #b8f0d8; /* Signature Mint */
+  --text: #e6edea; /* Soft Off-White */
+  --muted: #8a9a94; /* Sage Gray */
+  --line: rgba(184,240,216,.05);
+  --mint: var(--accent);
   --fd:'Syne',sans-serif; --fb:'Inter',sans-serif; --fm:'JetBrains Mono',monospace;
   --imgf:grayscale(100%) contrast(1.1) brightness(0.8);
   --sb:0px;
 }
 
-body{background:var(--bg);color:var(--text);font-family:var(--fb);overflow-x:hidden;cursor:none;overscroll-behavior:none}
+body{background:radial-gradient(circle at 50% 0%, var(--bg-alt) 0%, var(--bg) 100%);color:var(--text);font-family:var(--fb);overflow-x:hidden;cursor:none;overscroll-behavior:none}
 
 /* Pro typography — kerning + ligatures on every header */
 h1,h2,h3,.logo,.proj-title,.contact-h,.about-h,.hero-name,.stat-num,.cap-col-title{
@@ -127,7 +132,7 @@ nav{
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* SHARED */
-.section{padding:7.5rem 3rem;max-width:1100px;margin:0 auto}
+.section{padding:7.5rem 3rem;max-width:1100px;margin:0 auto; border-top:1px solid var(--line);}
 .s-label{font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(228,228,228,.22);display:flex;align-items:center;gap:1rem;margin-bottom:4rem}
 .s-label::after{content:'';flex:1;height:1px;background:var(--line)}
 
@@ -211,7 +216,7 @@ footer p{font-size:.58rem;letter-spacing:.14em;color:rgba(228,228,228,.14);text-
 /* RESPONSIVE */
 @media (max-width: 800px) {
   /* Zero overflow */
-  html, body { overflow-x: hidden !important; width: 100% !important; }
+  html, body { overflow-x: hidden !important; width: 100% !important; position: relative !important; }
 
   /* Navigation and spacing */
   nav { padding: 0.8rem 1.2rem; }
