@@ -45,6 +45,11 @@ a{transition:color .22s ease,border-color .22s ease,opacity .22s ease}
   white-space:nowrap;
 }
 
+.hero-tag .tag-label{
+  display:block;
+  margin-top:.15rem;
+}
+
 .flag-mw{
   display:inline-block;
   width:1.05em;
