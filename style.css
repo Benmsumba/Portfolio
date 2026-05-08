@@ -304,10 +304,11 @@ nav{
 }
 
 .marquee-serif {
-  font-family: var(--fd);
-  font-size: 1.05rem;
-  font-style: italic;
+  font-family: var(--fb);
+  font-size: .95rem;
   font-weight: 400;
+  letter-spacing: .02em;
+  text-transform: lowercase;
   color: var(--mint);
   display: inline-block;
   white-space: nowrap;
