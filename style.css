@@ -24,7 +24,7 @@ body{background:
   radial-gradient(circle at 18% 18%, rgba(255,255,255,.04) 0%, transparent 26%),
   radial-gradient(circle at 82% 0%, rgba(184,240,216,.03) 0%, transparent 30%),
   linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 62%, #0c1116 100%);
-  color:var(--text);font-family:var(--fb);overflow-x:hidden;cursor:none;overscroll-behavior:none;position:relative;}
+  color:var(--text);font-family:var(--fb);overflow-x:hidden;cursor:none;overscroll-behavior-x:none;overscroll-behavior-y:auto;position:relative;touch-action:pan-y;}
 
 /* Pro typography — kerning + ligatures on every header */
 h1,h2,h3,.logo,.proj-title,.contact-h,.about-h,.hero-name,.stat-num,.cap-col-title{
@@ -36,17 +36,22 @@ h1,h2,h3,.logo,.proj-title,.contact-h,.about-h,.hero-name,.stat-num,.cap-col-tit
 /* Smooth color transition on every link */
 a{transition:color .22s ease,border-color .22s ease,opacity .22s ease}
 
+.hero-tag .tag-inline,
+#lab .tag-inline,
+.contact-info .tag-inline{
+  display:inline-flex !important;
+  align-items:center;
+  gap:.28em;
+  white-space:nowrap;
+}
+
 .flag-mw{
   display:inline-block;
   width:1.05em;
   height:.72em;
-  margin-left:.28em;
   vertical-align:-.08em;
-  background-color:#000;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Crect width='3' height='.666' y='0' fill='%23000'/%3E%3Crect width='3' height='.666' y='.666' fill='%23ce1126'/%3E%3Crect width='3' height='.668' y='1.332' fill='%23006a4e'/%3E%3Ccircle cx='1.5' cy='.62' r='.35' fill='%23fcd116'/%3E%3C/svg%3E");
-  background-size:cover;
-  background-repeat:no-repeat;
   border-radius:1px;
+  object-fit:cover;
   box-shadow:0 0 0 1px rgba(255,255,255,.06) inset;
 }
 
@@ -293,7 +298,7 @@ footer p{font-size:.58rem;letter-spacing:.14em;color:rgba(228,228,228,.14);text-
 /* RESPONSIVE */
 @media (max-width: 800px) {
   /* Zero overflow */
-  html, body { overflow-x: hidden !important; width: 100% !important; position: relative !important; }
+  html, body { overflow-x: hidden !important; width: 100% !important; position: relative !important; touch-action: pan-y !important; overscroll-behavior-y: auto !important; -webkit-overflow-scrolling: touch !important; }
 
   /* Navigation and spacing */
   nav { padding: 0.8rem 1.2rem; }
