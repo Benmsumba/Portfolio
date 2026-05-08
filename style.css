@@ -591,12 +591,7 @@ nav{
   position: relative;
   display: inline-flex;
   align-items: center;
-  gapHero index: stack on mobile */
-  .hero-index { grid-template-columns: 1fr !important; gap: 1.6rem !important; }
-  .hero-scroll-cue { display: none !important; }
-  .hero-index-divider { margin: 1.6rem 0 !important; }
-
-  /* : .4em;
+  gap: .4em;
   background: #0a0a0c;
   color: #b8f0d8;
   padding: .88rem 2.2rem;
@@ -725,6 +720,11 @@ footer p{font-size:.58rem;letter-spacing:.14em;color:rgba(228,228,228,.14);text-
 
   /* Ensure hero title doesn't break and remains readable */
   .hero-meta, .hero-foot { width: 100%; }
+
+  /* Hero index: stack on mobile */
+  .hero-index { grid-template-columns: 1fr !important; gap: 1.6rem !important; }
+  .hero-scroll-cue { display: none !important; }
+  .hero-index-divider { margin: 1.6rem 0 !important; }
 
   /* About image and items */
   .about-img-wrap { min-height: 220px; width: 100%; }
