@@ -1,13 +1,12 @@
-# Ben Msumba personal website
+# Ben Msumba portfolio
 
-Navy-and-lime portfolio for Ben Msumba, Pharmacy Student & Health Tech Innovator.
+The portfolio is served at [benmsumba.me](https://benmsumba.me/) through Vercel.
 
-Includes About, Education, My Vision, and GitHub/LinkedIn contact links with Font Awesome brand icons. No invented projects or achievements; no profile photo.
+- `npm ci` installs the locked dependencies.
+- `npm run dev` starts Vite for local development.
+- `npm run build` writes the prerendered production site to `dist/client`.
+- `npm run preview` previews the production build locally. Vercel applies the production security headers from `vercel.json`.
 
-The decorative Three.js molecular scene floats gently and rotates in response to pointer movement. Includes reduced-motion support, offscreen rendering suspension, and a static raster fallback if WebGL cannot start. The molecules are abstract decoration, not a representation of a specific compound.
+The optional Sites packaging workflow uses `npm run build:sites` and `npm run test:sites`. It requires `.openai/hosting.json` from the Sites hosting setup.
 
-Run `npm install`, then `npm run dev`. Build with `npm run build`.
-
-Open the separate self-contained Ben-Msumba-Website.html download directly in a modern browser. No network or server is required for its bundled assets. The live 3D scene requires WebGL2; otherwise the original raster artwork remains visible.
-
-Production build and packaging tests pass. Cloud browser visual verification remains blocked by unavailable preview infrastructure; see design-qa.md.
+The homepage includes a decorative Three.js scene and a static image fallback. The Google Search Console ownership verification file in `public` must remain in the deployment to preserve verification.
